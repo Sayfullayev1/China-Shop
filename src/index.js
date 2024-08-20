@@ -2,8 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+
+
 import DashboardLayout from './layouts/dashboardLayout/DashboardLayout';
+
+
 import HomePage from './pages/homePage/HomePage';
+import MensShopingPage from './pages/GlobalShopingPage/mensShopingPage/MensShopingPage';
+import WomensShopingPage from './pages/GlobalShopingPage/womensShopingPage/WomensShopingPage';
+import SaleShopingPage from './pages/GlobalShopingPage/saleShopingPage/SaleShopingPage';
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +34,13 @@ root.render(
 
 
           <Route element={<HomePage/>} path='/'/>
+
+          <Route element={<MensShopingPage/>} path='/mens'/>
+
+          <Route element={<WomensShopingPage/>} path='/womens'/>
+
+          <Route element={<SaleShopingPage/>} path='/sale'/>
+
 
         </Route>
 

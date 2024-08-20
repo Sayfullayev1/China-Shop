@@ -1,0 +1,161 @@
+.header{
+    width: 100%;
+    margin-top: 53px;
+    padding: 0 4%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.header__logo-text{
+    margin-top: -2px;
+}
+.header__logo-text>h1{
+    font-family: "Lato", sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 20px;
+}
+
+
+.header__menu{
+    display: flex;
+    gap: 12px;
+}
+
+.header__menu_list{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+}
+
+
+.header__menu_item{
+    width: 18px;
+}
+.header__menu_item__link>img{
+    width: 100%;
+}
+
+
+.header__menu_btn{
+    margin-top: -2px;
+    width: 20px;
+    cursor: pointer;
+}
+.header__menu_btn>img{
+    width: 100%;
+}
+
+
+
+
+
+@media ( min-width: 330px ) {
+
+    .header{
+        margin-top: 59px;
+        padding: 0 5%;
+    }
+
+
+
+    .header__logo-text>h1{
+        font-size: 23px;
+    }
+    
+    
+    .header__menu{
+        display: flex;
+        gap: 15px;
+    }
+    
+    .header__menu_list{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+    }
+    
+    .header__menu_item{
+        width: 20px;
+    }
+
+
+    .header__menu_btn{
+        margin-top: -2px;
+        width: 20px;
+        cursor: pointer;
+    }
+}
+
+
+
+@media ( min-width: 360px ) {
+
+    .header{
+        margin-top: 64px;
+        padding: 0 6%;
+    }
+
+
+    .header__logo-text>h1{
+        font-size: 24px;
+    }
+    
+    
+    .header__menu{
+        display: flex;
+        gap: 17px;
+    }
+    
+    .header__menu_list{
+        gap: 10px;
+    }
+    
+
+    .header__menu_btn{
+        margin-top: -2px;
+        width: 20px;
+        cursor: pointer;
+    }
+}
+
+
+
+
+@media ( min-width: 390px ) {
+
+    .header{
+        margin-top: 69px;
+        padding: 0 7%;
+    }
+
+
+    .header__menu{
+        gap: 19px;
+    }
+
+    .header__menu_item{
+        width: 22px;
+    }
+    .header__menu_list{
+        gap: 13px;
+    }
+
+    .header__menu_btn{
+        margin-top: -0.5px;
+        width: 22px;
+        cursor: pointer;
+    }
+}
+
+
+
+@media ( min-width: 420px ) {
+    .header__menu_list{
+        gap: 18px;
+    }
+}
