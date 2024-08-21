@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './globalShopingPageCardComponent.scss'
 
 
 import LikeButtonComponent from '../likeButtonComponent/LikeButtonComponent';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,9 +13,12 @@ export default function GlobalShopingPageCardComponent(props) {
 
     const [productPrice, setProductPrice] = useState( { theMainPartOfThePrice: "", restOfPrice: "", } )
 
+    const cardImgWrapper = useRef()
 
     useEffect(() => {
         editingProductPrice()
+
+        goToProductPage()
     }, [])
     
 
@@ -29,13 +33,39 @@ export default function GlobalShopingPageCardComponent(props) {
             }
         )
     }
+
+    const navigate = useNavigate();
+
+
+    function goToProductPage() {
+        
+        let scrollPositionIndex = window.scrollY
+    
+        cardImgWrapper.current.addEventListener('touchstart', function() {
+          scrollPositionIndex = window.scrollY
+        });
+    
+        cardImgWrapper.current.addEventListener('touchend', function(event) {
+    
+          let newScrollPositionIndex = window.scrollY
+          
+          if (newScrollPositionIndex===scrollPositionIndex) {
+
+            if (!event.target.closest('.global_shoping-card__img_wrapper__btn')) {
+                // Только если нажатие не на кнопку лайка
+                navigate('/another-page');
+            }
+          }
+        });
+        
+    }
     
 
   return (
     <div className='global_shoping-card'>
 
 
-        <div className='global_shoping-card__img_wrapper'>
+        <div className='global_shoping-card__img_wrapper' ref={cardImgWrapper}>
 
             <div className='global_shoping-card__img_wrapper__btn'>
                 <LikeButtonComponent/>
