@@ -16,6 +16,15 @@ import SaleShopingPage from './pages/GlobalShopingPage/saleShopingPage/SaleShopi
 
 
 
+import UserLayout from './layouts/userLayout/UserLayout';
+
+
+import ProductPage from './pages/productPage/ProductPage';
+
+
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -44,6 +53,15 @@ root.render(
 
         </Route>
 
+
+        <Route element={<UserLayout/>}>
+
+
+          <Route element={<ProductPage/>} path='/product/:id'/>
+
+
+        </Route>
+          
 
       </Routes>
     

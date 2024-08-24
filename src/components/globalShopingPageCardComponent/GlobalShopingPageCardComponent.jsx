@@ -34,6 +34,22 @@ export default function GlobalShopingPageCardComponent(props) {
         )
     }
 
+
+    
+    function createLinkForProductPage() {
+
+        let editingProductName = cardData.cardName.toLowerCase().replace(/ /g, '-')
+
+        let uniqueProductNumber = cardData.uniqueProductNumber
+
+
+        let linkOnProduct = `${editingProductName}-${uniqueProductNumber}`
+        
+        return(linkOnProduct)
+    }
+
+
+
     const navigate = useNavigate();
 
 
@@ -53,7 +69,7 @@ export default function GlobalShopingPageCardComponent(props) {
 
             if (!event.target.closest('.global_shoping-card__img_wrapper__btn')) {
                 // Только если нажатие не на кнопку лайка
-                navigate('/another-page');
+                navigate(`/product/${createLinkForProductPage()}`);
             }
           }
         });
