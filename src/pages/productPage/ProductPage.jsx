@@ -3,7 +3,7 @@ import './productPage.scss'
 
 
 import { productData } from '../../localStorage/productData/productData'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 import buyBtnImage from '../../phootos/buyBtnImage/buyIcon.svg'
@@ -11,10 +11,13 @@ import addTOCartImage from '../../phootos/addTOCartImage/tote.svg'
 
 
 
+import LikeButtonComponent from '../../components/likeButtonComponent/LikeButtonComponent';
+
 
 import StarRatingComponent from '../../components/starRatingComponent/StarRatingComponent';
 import ProductPageDescription from '../../components/productPageDescription/ProductPageDescription';
 import SelectProductSizeComponent from '../../components/selectProductSizeComponent/SelectProductSizeComponent';
+
 
 
 
@@ -30,7 +33,6 @@ export default function ProductPage() {
 
 
     const [productSize, setProductSize] = useState()
-    const quantityOfProductOfThisSize = 10
     const [orderQuantityOfThisProduct, setOrderQuantityOfThisProduct] = useState(0)
 
 
@@ -91,16 +93,25 @@ export default function ProductPage() {
 
     const getInformationFromProductSizeButton = (info) => {
         setProductSize(info)
+
+        setOrderQuantityOfThisProduct(0)
     };
       
 
     function changeTheQuantityOfTheProductBeingPurchased(btnMeaning) {
-        if (btnMeaning==="+") {
+        if (btnMeaning==="+" && orderQuantityOfThisProduct < data[`productQuantity_${productSize}`]) {
             setOrderQuantityOfThisProduct(orderQuantityOfThisProduct+1)
-        } else if (btnMeaning==="-") {
+        } else if (btnMeaning==="-" && orderQuantityOfThisProduct>0) {
             setOrderQuantityOfThisProduct(orderQuantityOfThisProduct-1)
-            
         }
+    }
+
+
+
+    const navigate = useNavigate();
+
+    function comeBack() {
+        navigate(-1);
     }
 
 
@@ -118,6 +129,25 @@ export default function ProductPage() {
 
                     <div className='page-product__main__img_wrapper' ref={pageProductMainImgWrapper}>
                         <img className='page-product__main__img' src={data.producImage} alt="" />
+                    </div>
+
+                    <div className='page-product__main__content__btn_wrapper'>
+
+                        <div className='page-product__main__content__exit-btn' >
+                            <div className='page-product__main__content__exit-btn' onClick={() => comeBack()}>
+                                <img src="https://cdn-icons-png.flaticon.com/512/2223/2223615.png" alt="" />
+                            </div>                            
+                        </div>
+
+                        <div className='page-product__main__content__like-btn_wrapper'>
+
+                            <div className='page-product__main__content__like-btn'>
+
+                                <LikeButtonComponent/>
+                            
+                            </div>
+                        </div>
+                        
                     </div>
 
                 </div>
@@ -192,7 +222,7 @@ export default function ProductPage() {
 
             <div className='page-product__section__select_size'>
 
-                <SelectProductSizeComponent getInfo={getInformationFromProductSizeButton} />
+                <SelectProductSizeComponent getInfo={getInformationFromProductSizeButton} data={data}/>
 
             </div>
 

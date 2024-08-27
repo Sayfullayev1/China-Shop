@@ -15,13 +15,34 @@ export default function SelectProductSizeComponent(props) {
     const [specifyProductSize, setSpecifyProductSize ] = useState("S")
 
 
+
+
     useEffect(() => {
 
         selectSizeBtnClick()
 
+        checkWhatSizeOfProductIsLeft()
+
     }, [selectSizeBtn])
 
     
+
+    useEffect(() => {
+        checkWhatSizeOfProductIsLeft(props.data)
+    }, [props.data])
+
+
+    
+    function checkWhatSizeOfProductIsLeft(infoData) {
+        if (infoData) {
+            productSize.map((item, index) => {
+                if (infoData[`productQuantity_${item}`]===0) {
+                        selectSizeBtn.current[index].classList.add('select_size__btn__check-mark_line-through'); 
+                }
+            })
+        }
+    }
+
 
     function selectSizeBtnClick(index) {
         
@@ -32,11 +53,12 @@ export default function SelectProductSizeComponent(props) {
                     color: white;
                 `
             } else if (index || index===0) {
-                selectSizeBtn.current.forEach((item) => {
+                    
+                selectSizeBtn.current.map((item, i) => {
                     item.style.cssText = `
                         background: #F1F4FB; 
                         color: black;
-                    `
+                    ` 
                 })
 
                 selectSizeBtn.current[index].style.cssText = `
@@ -45,10 +67,13 @@ export default function SelectProductSizeComponent(props) {
                 `
 
                 setSpecifyProductSize(productSize[index])
+                
             }
             
         }
     }
+
+    
 
 
 
