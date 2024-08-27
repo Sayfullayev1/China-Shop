@@ -6,8 +6,13 @@ import { productData } from '../../localStorage/productData/productData'
 import { useLocation } from 'react-router-dom';
 
 
+import buyBtnImage from '../../phootos/buyBtnImage/buyIcon.svg'
+
+
+
 import StarRatingComponent from '../../components/starRatingComponent/StarRatingComponent';
 import ProductPageDescription from '../../components/productPageDescription/ProductPageDescription';
+import SelectProductSizeComponent from '../../components/selectProductSizeComponent/SelectProductSizeComponent';
 
 
 
@@ -19,6 +24,9 @@ export default function ProductPage() {
     const [productPrice, setProductPrice] = useState( { theMainPartOfThePrice: "", restOfPrice: "", } )
 
     const [data, setData] = useState([])
+
+
+    
 
 
 
@@ -117,7 +125,27 @@ export default function ProductPage() {
             </div>
 
 
-            <div className=''></div>
+            <div className='page-product__section__buy_btnWrapper'>
+
+                <div className='page-product__section__buy_btnWrapper__show_quantity'>
+                    <div className='page-product__section__buy_btnWrapper__show_quantity__change'>
+                        <button>-</button>
+                    </div>
+                    <div className='page-product__section__buy_btnWrapper__show_quantity__quantity'>
+                        <h1>0</h1>
+                    </div>
+                    <div className='page-product__section__buy_btnWrapper__show_quantity__change'>
+                        <button>+</button>
+                    </div>
+                </div>
+
+                <div className='page-product__section__buy_btnWrapper__order'>
+                    <button className='page-product__section__buy_btnWrapper__order__button'>
+                        <img src={buyBtnImage} alt="" />
+                    </button>
+                </div>
+
+            </div>
 
 
             <div className='page-product__section__description'>
@@ -125,7 +153,11 @@ export default function ProductPage() {
             </div>
 
 
-            <div className=''></div>
+            <div className='page-product__section__select_size'>
+
+                <SelectProductSizeComponent/>
+
+            </div>
 
 
         </section>

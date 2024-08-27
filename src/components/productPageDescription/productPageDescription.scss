@@ -1,20 +1,20 @@
 .description {
     font-family: Arial, sans-serif;
-    color: #6c6c6c; /* Цвет текста */
+    color: #6c6c6c; 
   }
   
   .description h3 {
-    font-weight: bold; /* Жирный текст для заголовка */
-    color: black; /* Черный цвет для заголовка */
-    margin-bottom: 5px; /* Отступ снизу заголовка */
+    font-weight: bold; 
+    color: black; 
+    margin-bottom: 5px; 
     font-size: 10px;
     font-weight: 800;
   }
   
   .description-text {
-    overflow: hidden; /* Обрезка текста, если он превышает высоту */
-    transition: max-height 0.3s ease; /* Плавное изменение высоты при раскрытии */
-    line-height: 1.6; /* Межстрочный интервал для текста */
+    overflow: hidden; 
+    transition: max-height 0.3s ease; 
+    line-height: 1.6; 
     font-size: 12px;
     font-weight: 500;
     text-align: justify;
@@ -28,7 +28,7 @@
   }
   
   .description-text.collapsed {
-    max-height: 5.1em; /* Высота, соответствующая 4 строкам текста */
+    max-height: 5.1em; 
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -38,17 +38,17 @@
   }
   
   .description-text.expanded {
-    max-height: none; /* Развернуть текст */
+    max-height: none; 
   }
   
   .toggle-button {
-    display: inline-block; /* Отображение в одну строку */
-    color: black; /* Цвет текста кнопки */
-    cursor: pointer; /* Курсор указателя */
-    text-decoration: underline; /* Подчеркивание текста кнопки */
+    display: inline-block; 
+    color: black; 
+    cursor: pointer; 
+    text-decoration: underline;
     text-decoration-thickness: 1px; 
     text-underline-offset: 2px;  
-    font-weight: bold; /* Жирный текст кнопки */
+    font-weight: bold;
 
     font-size: 12px;
     font-weight: 500;
@@ -58,3 +58,17 @@
   .third-line:nth-of-type(3){
     width: 50%;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
