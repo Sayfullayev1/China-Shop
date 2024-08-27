@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './productPage.scss'
 
 
@@ -7,6 +7,8 @@ import { useLocation } from 'react-router-dom';
 
 
 import buyBtnImage from '../../phootos/buyBtnImage/buyIcon.svg'
+import addTOCartImage from '../../phootos/addTOCartImage/tote.svg'
+
 
 
 
@@ -26,6 +28,15 @@ export default function ProductPage() {
     const [data, setData] = useState([])
 
 
+
+    const [productSize, setProductSize] = useState()
+    const quantityOfProductOfThisSize = 10
+    const [orderQuantityOfThisProduct, setOrderQuantityOfThisProduct] = useState(0)
+
+
+
+    const pageProductMain = useRef()
+    const pageProductMainImgWrapper = useRef()
     
 
 
@@ -62,11 +73,35 @@ export default function ProductPage() {
     }, [data])
     
     
-
+    useEffect(() => {
+        if (pageProductMain && pageProductMainImgWrapper) {
+            const fixedElement = pageProductMainImgWrapper.current
+            const height = fixedElement.offsetHeight;
+            
+            
+            const parentElement = pageProductMain.current
+            parentElement.style.height = `${height}px`;
+        }
+        
+    }, [pageProductMain , pageProductMainImgWrapper, data])
 
 
     console.log(data);
-    
+
+
+    const getInformationFromProductSizeButton = (info) => {
+        setProductSize(info)
+    };
+      
+
+    function changeTheQuantityOfTheProductBeingPurchased(btnMeaning) {
+        if (btnMeaning==="+") {
+            setOrderQuantityOfThisProduct(orderQuantityOfThisProduct+1)
+        } else if (btnMeaning==="-") {
+            setOrderQuantityOfThisProduct(orderQuantityOfThisProduct-1)
+            
+        }
+    }
 
 
   return (
@@ -74,14 +109,14 @@ export default function ProductPage() {
 
 
 
-        <main className='page-product__main'>
+        <main className='page-product__main' ref={pageProductMain}>
 
 
             <div className='page-product__main__wrap'>
 
                 <div className='page-product__main__content'>
 
-                    <div className='page-product__main__img_wrapper'>
+                    <div className='page-product__main__img_wrapper' ref={pageProductMainImgWrapper}>
                         <img className='page-product__main__img' src={data.producImage} alt="" />
                     </div>
 
@@ -129,13 +164,13 @@ export default function ProductPage() {
 
                 <div className='page-product__section__buy_btnWrapper__show_quantity'>
                     <div className='page-product__section__buy_btnWrapper__show_quantity__change'>
-                        <button>-</button>
+                        <button onClick={() => changeTheQuantityOfTheProductBeingPurchased("-")}>-</button>
                     </div>
                     <div className='page-product__section__buy_btnWrapper__show_quantity__quantity'>
-                        <h1>0</h1>
+                        <h1>{orderQuantityOfThisProduct}</h1>
                     </div>
                     <div className='page-product__section__buy_btnWrapper__show_quantity__change'>
-                        <button>+</button>
+                        <button onClick={() => changeTheQuantityOfTheProductBeingPurchased("+")}>+</button>
                     </div>
                 </div>
 
@@ -149,18 +184,33 @@ export default function ProductPage() {
 
 
             <div className='page-product__section__description'>
+
                 <ProductPageDescription text={data?.productDescription}/>
+            
             </div>
 
 
             <div className='page-product__section__select_size'>
 
-                <SelectProductSizeComponent/>
+                <SelectProductSizeComponent getInfo={getInformationFromProductSizeButton} />
 
             </div>
 
 
         </section>
+
+
+
+        <article className='page-product__article'>
+            <div className='page-product__article__btn_wrapper'>
+                <button className='page-product__article__btn'>
+                    <span>
+                        <img src={addTOCartImage} alt="" />
+                    </span>
+                    ADD TO Cart
+                </button>
+            </div>
+        </article>
 
 
 

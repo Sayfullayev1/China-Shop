@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './selectProductSizeComponent.scss'
 
 
 
 
-export default function SelectProductSizeComponent() {
+export default function SelectProductSizeComponent(props) {
 
     const selectSizeBtn =useRef([])
 
@@ -12,10 +12,16 @@ export default function SelectProductSizeComponent() {
     const productSize = [ "S", "M", , "L", "XL", "XXL",]
 
 
+    const [specifyProductSize, setSpecifyProductSize ] = useState("S")
+
+
     useEffect(() => {
+
         selectSizeBtnClick()
+
     }, [selectSizeBtn])
 
+    
 
     function selectSizeBtnClick(index) {
         
@@ -37,10 +43,23 @@ export default function SelectProductSizeComponent() {
                     background: #6342E8;
                     color: white;
                 `
+
+                setSpecifyProductSize(productSize[index])
             }
             
         }
     }
+
+
+
+    useEffect(() => {
+        handleClick()
+    }, [specifyProductSize])
+
+
+    const handleClick = () => {
+        props.getInfo(specifyProductSize); 
+    };
 
 
   return (
