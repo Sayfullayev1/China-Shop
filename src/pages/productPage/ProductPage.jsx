@@ -70,35 +70,34 @@ export default function ProductPage() {
                 }
             )
         }
+
+
     }, [data])
     
     
     useEffect(() => {
-        // if (pageProductMain && pageProductMainImgWrapper && data) {
-            // const fixedElement = pageProductMainImgWrapper.current
-            // const height = fixedElement.offsetHeight;
-            
-            
-            // const parentElement = pageProductMain.current
-            // parentElement.style.height = `${height}px`;
-        // }
+        ddd()
+        
+    }, [pageProductMain, pageProductMainImgWrapper, data])
 
-        if (pageProductMain && pageProductMainImgWrapper) {
+    function ddd() {
+        if (pageProductMain && pageProductMainImgWrapper && data) {
+            
+            
             const fixedElement = pageProductMainImgWrapper.current
             const height = fixedElement.offsetHeight;
             
             
             const parentElement = pageProductMain.current
             parentElement.style.height = `${height}px`;
+
+            console.log("dddd");
+            console.log(fixedElement);
+            console.log(height);
+            
         }
+    }
 
-        
-        
-        
-    }, [pageProductMain , pageProductMainImgWrapper, data])
-
-
-    console.log(data);
 
 
     const getInformationFromProductSizeButton = (info) => {
