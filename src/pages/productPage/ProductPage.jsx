@@ -55,8 +55,6 @@ export default function ProductPage() {
         uniqueProductIndex = uniqueProductIndex[uniqueProductIndex.length-1]
 
         setData(productData[uniqueProductIndex])
-
-
     }
 
 
@@ -76,6 +74,15 @@ export default function ProductPage() {
     
     
     useEffect(() => {
+        // if (pageProductMain && pageProductMainImgWrapper && data) {
+            // const fixedElement = pageProductMainImgWrapper.current
+            // const height = fixedElement.offsetHeight;
+            
+            
+            // const parentElement = pageProductMain.current
+            // parentElement.style.height = `${height}px`;
+        // }
+
         if (pageProductMain && pageProductMainImgWrapper) {
             const fixedElement = pageProductMainImgWrapper.current
             const height = fixedElement.offsetHeight;
@@ -84,6 +91,9 @@ export default function ProductPage() {
             const parentElement = pageProductMain.current
             parentElement.style.height = `${height}px`;
         }
+
+        
+        
         
     }, [pageProductMain , pageProductMainImgWrapper, data])
 
