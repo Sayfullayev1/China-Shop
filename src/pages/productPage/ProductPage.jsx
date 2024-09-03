@@ -70,33 +70,32 @@ export default function ProductPage() {
                 }
             )
         }
-
-
     }, [data])
     
+
+    const [a, setA] = useState()
     
     useEffect(() => {
-        ddd()
-        
-    }, [pageProductMain, pageProductMainImgWrapper, data])
 
-    function ddd() {
         if (pageProductMain && pageProductMainImgWrapper && data) {
             
             
             const fixedElement = pageProductMainImgWrapper.current
             const height = fixedElement.offsetHeight;
             
+            setA(height)
             
             const parentElement = pageProductMain.current
-            parentElement.style.height = `${height}px`;
+            parentElement.style.height = `${a}px`;
 
             console.log("dddd");
             console.log(fixedElement);
             console.log(height);
             
         }
-    }
+        
+    }, [pageProductMain, pageProductMainImgWrapper, data, a])
+    
 
 
 
