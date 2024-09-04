@@ -54,25 +54,26 @@ export default function GlobalShopingPageCardComponent(props) {
 
 
     function goToProductPage() {
-        
-        let scrollPositionIndex = window.scrollY
-    
-        cardImgWrapper.current.addEventListener('touchstart', function() {
-          scrollPositionIndex = window.scrollY
-        });
-    
-        cardImgWrapper.current.addEventListener('touchend', function(event) {
-    
-          let newScrollPositionIndex = window.scrollY
-          
-          if (newScrollPositionIndex===scrollPositionIndex) {
 
+        let scrollPositionIndex = window.scrollY;
+
+        cardImgWrapper.current.addEventListener('touchstart', function() {
+          scrollPositionIndex = window.scrollY;
+        }, { passive: true });  
+        
+        cardImgWrapper.current.addEventListener('touchend', function(event) {
+          let newScrollPositionIndex = window.scrollY;
+        
+          if (newScrollPositionIndex === scrollPositionIndex) {
             if (!event.target.closest('.global_shoping-card__img_wrapper__btn')) {
-                // Только если нажатие не на кнопку лайка
-                navigate(`/product/${createLinkForProductPage()}`);
+              navigate(`/product/${createLinkForProductPage()}`);
             }
           }
-        });
+        }, { passive: true });
+
+        // cardImgWrapper.current.addEventListener('click', function(event) {
+        //     navigate(`/product/${createLinkForProductPage()}`);
+        //   });
         
     }
     

@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './headerComponent.scss'
 
 import { Link } from 'react-router-dom'
 
 
 import menuBtnImage from '../../phootos/headerMenuImages/btnImage/Menu.svg'
+
+
 import { headerMenuListData } from '../../localStorage/headerMenuListImages/headerMenuListData'
+import DropdownMenuComponent from '../dropdownMenuComponent/DropdownMenuComponent'
 
 
 
 export default function HeaderComponent() {
+
+  const [ dropDownMenuExit, setDropDownMenuExit ] = useState(false) 
+
+  const dropdownMenuWorking = (meaning) => {
+    setDropDownMenuExit(meaning)
+  };
+
 
   
   return (
@@ -39,10 +49,14 @@ export default function HeaderComponent() {
 
         </div>
 
-        <div className='header__menu_btn'>
+        <div className='header__menu_btn' onClick={() => dropdownMenuWorking(true)}>
           <img src={menuBtnImage} alt="" />
         </div>
 
+      </div>
+
+      <div className={`header__dropdown-menu ${ dropDownMenuExit===false ? 'header__dropdown-menu_passive' : 'header__dropdown-menu_active'}`}>
+          <DropdownMenuComponent click={dropdownMenuWorking}/>
       </div>
 
     </header>

@@ -73,7 +73,8 @@ export default function ProductPage() {
     }, [data])
     
 
-    const [a, setA] = useState()
+
+    const [imageShowItemHeight, setImageShowItemHeight] = useState(0)
     
     useEffect(() => {
 
@@ -83,18 +84,14 @@ export default function ProductPage() {
             const fixedElement = pageProductMainImgWrapper.current
             const height = fixedElement.offsetHeight;
             
-            setA(height)
+            setImageShowItemHeight(height)
             
             const parentElement = pageProductMain.current
-            parentElement.style.height = `${a}px`;
+            parentElement.style.height = `${imageShowItemHeight}px`;
 
-            console.log("dddd");
-            console.log(fixedElement);
-            console.log(height);
-            
         }
         
-    }, [pageProductMain, pageProductMainImgWrapper, data, a])
+    }, [pageProductMain, pageProductMainImgWrapper, data, imageShowItemHeight])
     
 
 
