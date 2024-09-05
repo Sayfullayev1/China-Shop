@@ -95,7 +95,7 @@ export default function HeaderComponent() {
               headerMenuListData?.map((item, index) => {
                 return(
                   <li className='header__menu_item' key={index}>
-                    <Link className='header__menu_item__link'>
+                    <Link className='header__menu_item__link' to={`${item.btnLink}`}>
                       <img src={item.btnImage} alt="" />
                     </Link>
                   </li>

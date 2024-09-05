@@ -20,6 +20,8 @@ import UserLayout from './layouts/userLayout/UserLayout';
 
 
 import ProductPage from './pages/productPage/ProductPage';
+import SearchProductPage from './pages/searchProductPage/SearchProductPage';
+import CartPage from './pages/cartPage/CartPage';
 
 
 
@@ -58,6 +60,12 @@ root.render(
 
 
           <Route element={<ProductPage/>} path='/product/:id'/>
+
+
+          <Route element={<SearchProductPage/>} path='/search'/>
+
+
+          <Route element={<CartPage/>} path='/cart'/>
 
 
         </Route>

@@ -71,11 +71,8 @@ export default function GlobalShopingPageCardComponent(props) {
           }
         }, { passive: true });
 
-        // cardImgWrapper.current.addEventListener('click', function(event) {
-        //     navigate(`/product/${createLinkForProductPage()}`);
-        //   });
         cardImgWrapper.current.addEventListener('pointerdown', function(event) {
-            if (event.pointerType === 'mouse') {
+            if (event.pointerType === 'mouse' && !event.target.closest('.global_shoping-card__img_wrapper__btn')) {
                 navigate(`/product/${createLinkForProductPage()}`);
             }
           });
