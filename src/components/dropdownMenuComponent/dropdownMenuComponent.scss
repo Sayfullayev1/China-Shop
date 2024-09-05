@@ -4,10 +4,10 @@
     background: linear-gradient(0deg, #6342E8, #6342E8),
     linear-gradient(141.63deg, #7F77FE 34.29%, #A573FF 95.36%);
 
-    padding: 15% 8% 13% 10%;
-    // overflow: auto;
+    padding: 10% 8% 13% 10%;
+    overflow: auto;
     display: grid;
-    grid-template-rows: 0.3fr 1fr 1fr; 
+    grid-template-rows: 0.02fr 0.04fr 1fr; 
 
 
     &__btn-wrapper{
@@ -25,7 +25,7 @@
     }
 
     &__user{
-        margin-top: 15%;
+        margin-top: 10%;
         width: 100%;
         display: flex;
         align-items: center;
@@ -158,10 +158,28 @@
     .dropdown-menu__user__info__nickname{
         font-size: 15px;
     }
+
+    .dropdown-menu__menu__link{
+        gap: 18px;
+    }
+    .dropdown-menu__menu__link__img{
+        width: 19px;
+    }
+    .dropdown-menu__menu__link__text{
+        font-size: 14px;
+    }
+
+    .dropdown-menu__exit-btn__img{
+        width: 18px;
+    }
 }
 
 
+
 @media (min-width: 350px) {
+    .dropdown-menu__user{
+        gap: 10px;
+    }
     .dropdown-menu__user__img-wrapper{
         width: 56px;
     }
@@ -170,5 +188,35 @@
     }
     .dropdown-menu__user__info__gmail{
         font-size: 12px;
+    }
+
+    .dropdown-menu__menu__link{
+        gap: 20px;
+    }
+    .dropdown-menu__menu__link__img{
+        width: 21px;
+    }
+}
+
+
+
+@media (min-width: 380px) {
+
+    .dropdown-menu__user__img-wrapper{
+        width: 64px;
+    }    
+
+    .dropdown-menu__user__info__nickname{
+        font-size: 18px;
+    }
+    .dropdown-menu__user__info__gmail{
+        font-size: 14px;
+    }
+
+    .dropdown-menu__menu__link{
+        gap: 22.5px;
+    }
+    .dropdown-menu__menu__link__img{
+        width: 24px;
     }
 }

@@ -74,6 +74,12 @@ export default function GlobalShopingPageCardComponent(props) {
         // cardImgWrapper.current.addEventListener('click', function(event) {
         //     navigate(`/product/${createLinkForProductPage()}`);
         //   });
+        cardImgWrapper.current.addEventListener('pointerdown', function(event) {
+            if (event.pointerType === 'mouse') {
+                navigate(`/product/${createLinkForProductPage()}`);
+            }
+          });
+          
         
     }
     

@@ -21,6 +21,7 @@ export default function DropdownMenuComponent({ click }) {
         click(false)
     }
 
+    
   return (
     <div className='dropdown-menu'>
         
@@ -56,9 +57,9 @@ export default function DropdownMenuComponent({ click }) {
             <div className='dropdown-menu__menu'>
                 <ul className='dropdown-menu__menu__list'>
                     {
-                        dropdownMenuListData.map((item) => {
+                        dropdownMenuListData.map((item, index) => {
                             return(
-                                <li className='dropdown-menu__menu__item'>
+                                <li className='dropdown-menu__menu__item' key={index}>
                                     <Link className='dropdown-menu__menu__link' to={item.itemLink}>
                                         <div className='dropdown-menu__menu__link__img'>
                                             <img src={item.itemImg} alt="" />
