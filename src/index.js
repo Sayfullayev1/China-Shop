@@ -22,6 +22,7 @@ import UserLayout from './layouts/userLayout/UserLayout';
 import ProductPage from './pages/productPage/ProductPage';
 import SearchProductPage from './pages/searchProductPage/SearchProductPage';
 import CartPage from './pages/cartPage/CartPage';
+import WishesPage from './pages/wishesPage/WishesPage';
 
 
 
@@ -66,6 +67,9 @@ root.render(
 
 
           <Route element={<CartPage/>} path='/cart'/>
+
+
+          <Route element={<WishesPage/>} path='/wishes'/>
 
 
         </Route>

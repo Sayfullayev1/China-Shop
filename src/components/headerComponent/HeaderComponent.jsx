@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './headerComponent.scss'
 
 import { Link } from 'react-router-dom'
@@ -31,13 +31,7 @@ export default function HeaderComponent() {
     if (meaning) {
       document.body.style.overflow = 'hidden';
 
-      // container.style.cssText = `
-      //   backdrop-filter: blur(10px); /* Размытие фона */
-      //   background-color: rgba(255, 255, 255, 0.1); /* Прозрачный белый туман */
-      // `
-
       container.appendChild(fogOverla);
-
       
       fogOverla.style.cssText = `
       position: fixed;
@@ -51,7 +45,6 @@ export default function HeaderComponent() {
       transition: opacity 1.5s;
     `;
     
-    // Затем через некоторое время (например, через 10 мс) изменяем opacity на 0.9
     setTimeout(() => {
       fogOverla.style.opacity = '0.9';
     }, 10);
@@ -64,18 +57,28 @@ export default function HeaderComponent() {
 
       setTimeout(() => {
         fogOverlaRemove.style.opacity = '0';
-      // fogOverlaRemove.remove();
-
       }, 10);
 
-      
       setTimeout(() => {
         fogOverlaRemove.style.opacity = '0';
         fogOverlaRemove.remove();
       }, 1500);
       
     }
+
   };
+
+  useEffect(() => {
+    if (true) {
+      let fogOverlaRemove = document.querySelector('.fogOverla');
+
+      if (fogOverlaRemove) {
+        fogOverlaRemove.addEventListener("click", function () {
+          dropdownMenuWorking(false)
+        })
+      }
+    }
+  }, [dropDownMenuExit])
 
 
   

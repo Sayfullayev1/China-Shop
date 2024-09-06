@@ -18,7 +18,7 @@ export const headerMenuListData = [
     },
     {
         btnImage: likkeImgBtn,
-        btnLink: '',
+        btnLink: 'wishes',
     },
     {
         btnImage: searchImgBtn,
